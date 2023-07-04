@@ -23,9 +23,9 @@
 2. 数据处理
 * 数据清洗：
 	- 爬取的房源数据部分无法进行地理编码，经纬度数据为unknown，可视化时进行剔除
-    	- 爬取到的房源数据中总价、面积含单位且为str格式，用最大最小值比较时需要剔除---使用apply(lambda x:x[0:-1]).astype('float')实现剔除单位和转换格式
-   	- 将获取到的poi数据去除无用部分，只保留名称和经纬度信息---使用filter函数筛选字典需要键，生成子字典
-    	- poi数据和房源数据中的经纬度信息均是合并的，前者为str格式的dict，用eval(row['location']).values()分离；后者为list[lng,lat]，用apply(lambda x: pd.Series(eval(x)))分离
+	- 爬取到的房源数据中总价、面积含单位且为str格式，用最大最小值比较时需要剔除---使用apply(lambda x:x[0:-1]).astype('float')实现剔除单位和转换格式
+	- 将获取到的poi数据去除无用部分，只保留名称和经纬度信息---使用filter函数筛选字典需要键，生成子字典
+	- poi数据和房源数据中的经纬度信息均是合并的，前者为str格式的dict，用eval(row['location']).values()分离；后者为list[lng,lat]，用apply(lambda x: pd.Series(eval(x)))分离
 * 数据转换：将数据转换为可处理的格式，如从CSV、Excel格式转换为DataFrame格式；poi数据中经纬度键值对为str类型，用ast.literal_eval遍历转换
 
 ***
